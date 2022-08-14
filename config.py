@@ -1,6 +1,6 @@
 ### 基础部分
 # 填写你的学号
-
+import os
 stutendID = os.environ['STUTENDID']
 passward = os.environ['PASSWARD']
 mailPass= os.environ['MAILPASS']
