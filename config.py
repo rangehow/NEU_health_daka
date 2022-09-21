@@ -15,7 +15,7 @@ sendMsgOnlyError = True
 
 
 # 发送的邮箱，这里可以设置成与接收邮箱一致（即自己发给自己），或者也可以用其他的
-sender = receiver
+sender = '954369920@qq.com'
 
 
 
