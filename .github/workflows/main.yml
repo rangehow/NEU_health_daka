@@ -64,7 +64,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         env:
-          STUTENDID : ${{ secrets.CRQACC }}
+          STUTENDID : ${{ secrets.CRACC }}
           PASSWARD : ${{ secrets.CRPASS }}
           MAILPASS: ${{ secrets.MAILPASS }}
           RECEIVER : ${{ secrets.RECEIVER }}
