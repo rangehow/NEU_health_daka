@@ -63,6 +63,7 @@ class daka():
                 'cross_city': '无',
                 'qitashixiang_qitaxuyaoshuomingdeshixiang': ''
             }
+            print(health_items)
             health_response = self.my_session.post(self.note_url, health_items)
             if health_response.status_code == 201:
                 print(str(health_response) + '健康打卡成功')
@@ -104,7 +105,7 @@ def main_handler(event, context):
     loginMsg = _daka.login()
     healthMsg, healSuc = _daka.healthDaka()
     temperatureMsg, tempSuc = _daka.temperatureDaka()
-
+    
     if config.sendMsgOnlyError and healSuc and tempSuc:
         pass
     else:
