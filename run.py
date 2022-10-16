@@ -52,8 +52,9 @@ class daka():
             note_response = self.my_session.get(self.create_url)
             
             self.token =re.findall(r'name=\"_token\"\s+value=\"([0-9a-zA-Z]+)\"',note_response.text, re.S)[0]
-            self.name = re.findall(r'当前用户：\s*(\w+)\s*', note_response.text, re.S)[0]
             print(self.token)
+            self.name = re.findall(r'当前用户：\s*(\w+)\s*', note_response.text, re.S)[0]
+            
             print(self.name)
             health_items = {
                 '_token': self.token,
