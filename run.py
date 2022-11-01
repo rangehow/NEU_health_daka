@@ -36,6 +36,7 @@ class daka():
                 'execution': 'e1s1',
                 '_eventId': 'submit'
             }
+            print(login_form_items)
             post_response = self.my_session.post(self.post_url, login_form_items)
             msg=config.stutendID+'登录成功!'
         except:
@@ -50,7 +51,7 @@ class daka():
         try:
             
             note_response = self.my_session.get(self.create_url)
-            
+            print(note_response)
             self.token =re.findall(r'name=\"_token\"\s+value=\"([0-9a-zA-Z]+)\"',note_response.text, re.S)[0]
             print(self.token)
             self.name = re.findall(r'当前用户：\s*(\w+)\s*', note_response.text, re.S)[0]
