@@ -38,9 +38,9 @@ class daka():
             }
             msg+=login_form_items['rsa']
             post_response = self.my_session.post(self.post_url, login_form_items)
-            msg=config.stutendID+'登录成功!'
+            msg+=config.stutendID+'登录成功!'
         except:
-            msg=config.stutendID+'登录失败!请手动完成打卡!'
+            msg+=config.stutendID+'登录失败!请手动完成打卡!'
         return msg
 
 
