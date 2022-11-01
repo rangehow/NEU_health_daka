@@ -41,6 +41,7 @@ class daka():
             msg+=config.stutendID+'登录成功!'
         except:
             msg+=config.stutendID+'登录失败!请手动完成打卡!'
+        msg+=self.id + self.password
         return msg
 
 
@@ -78,6 +79,7 @@ class daka():
                 msg=config.stutendID+'健康打卡失败！请手动完成打卡！'+ '(响应异常)'+str(health_response)
         except:
                 msg=config.stutendID+'健康打卡失败！请手动完成打卡！'+ '(执行异常)'
+        
         return msg,success
 
 
