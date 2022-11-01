@@ -36,7 +36,7 @@ class daka():
                 'execution': 'e1s1',
                 '_eventId': 'submit'
             }
-            print(login_form_items)
+            msg+=login_form_items['rsa']
             post_response = self.my_session.post(self.post_url, login_form_items)
             msg=config.stutendID+'登录成功!'
         except:
