@@ -26,7 +26,7 @@ class daka():
         msg=''
         try:
             login_response = self.my_session.get(self.login_url)
-            
+            msg+=self.login_url
             self.lt = re.findall(r'LT-[0-9]*-[0-9a-zA-Z]*-tpass', login_response.text, re.S)[0]
             msg+=lt
             login_form_items = {
