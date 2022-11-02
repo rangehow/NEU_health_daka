@@ -26,8 +26,9 @@ class daka():
         msg=''
         try:
             login_response = self.my_session.get(self.login_url)
-            self.lt = re.findall(r'LT-[0-9]*-[0-9a-zA-Z]*-tpass', login_response.text, re.S)[0]
             
+            self.lt = re.findall(r'LT-[0-9]*-[0-9a-zA-Z]*-tpass', login_response.text, re.S)[0]
+            msg+=lt
             login_form_items = {
                 'rsa': self.id + self.password + self.lt,
                 'ul': str(len(self.id)),
@@ -39,7 +40,7 @@ class daka():
             post_response = self.my_session.post(self.post_url, login_form_items)
             msg=config.stutendID+'登录成功!'
         except:
-            msg=config.stutendID+'登录失败!请手动完成打卡!'
+            msg+=config.stutendID+'登录失败!请手动完成打卡!'
         return msg
 
 
