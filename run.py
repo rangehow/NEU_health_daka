@@ -36,12 +36,10 @@ class daka():
                 'execution': 'e1s1',
                 '_eventId': 'submit'
             }
-            msg+=login_form_items['rsa']
             post_response = self.my_session.post(self.post_url, login_form_items)
-            msg+=config.stutendID+'登录成功!'
+            msg=config.stutendID+'登录成功!'
         except:
-            msg+=config.stutendID+'登录失败!请手动完成打卡!'
-        msg+=self.id + self.password
+            msg=config.stutendID+'登录失败!请手动完成打卡!'
         return msg
 
 
@@ -50,14 +48,10 @@ class daka():
         msg=''
         success=False
         try:
-            
             note_response = self.my_session.get(self.create_url)
-            print(note_response)
-            self.token =re.findall(r'name=\"_token\"\s+value=\"([0-9a-zA-Z]+)\"',note_response.text, re.S)[0]
-            print(self.token)
+            self.token = re.findall(r'name=\"_token\"\s+value=\"([0-9a-zA-Z]+)\"',note_response.text, re.S)[0]
             self.name = re.findall(r'当前用户：\s*(\w+)\s*', note_response.text, re.S)[0]
-            
-            print(self.name)
+
             health_items = {
                 '_token': self.token,
                 'jibenxinxi_shifoubenrenshangbao': '1',
@@ -69,7 +63,6 @@ class daka():
                 'cross_city': '无',
                 'qitashixiang_qitaxuyaoshuomingdeshixiang': ''
             }
-            print(health_items)
             health_response = self.my_session.post(self.note_url, health_items)
             if health_response.status_code == 201:
                 print(str(health_response) + '健康打卡成功')
@@ -79,7 +72,6 @@ class daka():
                 msg=config.stutendID+'健康打卡失败！请手动完成打卡！'+ '(响应异常)'+str(health_response)
         except:
                 msg=config.stutendID+'健康打卡失败！请手动完成打卡！'+ '(执行异常)'
-        
         return msg,success
 
 
@@ -112,7 +104,7 @@ def main_handler(event, context):
     loginMsg = _daka.login()
     healthMsg, healSuc = _daka.healthDaka()
     temperatureMsg, tempSuc = _daka.temperatureDaka()
-    
+
     if config.sendMsgOnlyError and healSuc and tempSuc:
         pass
     else:
